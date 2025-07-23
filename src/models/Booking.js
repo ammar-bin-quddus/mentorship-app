@@ -8,6 +8,10 @@ const bookingSchema = new mongoose.Schema({
   start: Date,
   end: Date,
   status: { type: String, enum: ["booked", "completed", "cancelled", "reschedule_pending"], default: "booked" },
+  rescheduleProposal: {
+    proposedTime: Date,
+    status: "pending" | "accepted" | "declined"
+  }
 });
 
 export default mongoose.models.Booking || mongoose.model("Booking", bookingSchema);
